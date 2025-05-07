@@ -2,6 +2,9 @@
 //
 
 #include "CPP-Generator.h"
+#include <coroutine>
+#include <iostream>
+#include <optional>
 
 using namespace std;
 
