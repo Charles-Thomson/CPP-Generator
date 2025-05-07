@@ -8,32 +8,24 @@
 
 using namespace std;
 
-class Generator {
-public:
-
-	// Define the promise type struct
-	struct promise_type {
-		// Value returned to caller. yieled by co_yield
-		int current_value;
-
-		Generator get_return_object() {
-			return Generator{ coroutine_handle<promise_type>::from_promise(*this) };
-		
-		}
-
-		
+Generator::Generator(handle_type h) : handle(h) {}
+Generator::~Generator() { if (handle) handle.destroy(); }
 
 
+bool Generator::next() {
+	if (!handle.done()) handle.resume();
+	return !handle.done();
 
+}
 
-	};
+int Generator::value() const {
+	return handle.promise().current_value;
+}
 
-	using handle_type = coroutine_handle<promise_type>;
+Generator count_to(int n) {
+	for (int i = 1; i <= n; i++) {
+		co_yield i;
+	}
 
-	explicit Generator(handle_type h) : handle(h) {}
-
-private:
-	handle_type handle;
-
-
-};
+}
+ 

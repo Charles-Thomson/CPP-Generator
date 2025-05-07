@@ -14,20 +14,12 @@ endif()
 
 project ("CPP-Generator")
 
-add_library(CPP_GENERATOR
+add_library(CPP-GENERATOR STATIC
     CPP-Generator.cpp
     CPP-Generator.h
 
 )
 
-# Add source to this project's executable. Not test files* 
-add_executable (CPP-Generator 
-"CPP-Generator.cpp" 
-"CPP-Generator.h" )
-
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET CPP-Generator PROPERTY CXX_STANDARD 20)
-endif()
 
 # TODO: Add tests and install targets if needed.
 
@@ -69,7 +61,7 @@ target_compile_options(generator_testing PRIVATE /MDd)
 
 
 target_link_libraries(generator_testing PRIVATE gtest gtest_main CPP_GENERATOR fmt::fmt)
-target_link_libraries(generator_testing PRIVATE gtest gtest_main)
+
 
 add_test(NAME Generator_Testing COMMAND generator_testing)
 
