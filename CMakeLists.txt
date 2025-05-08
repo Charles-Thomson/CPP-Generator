@@ -14,18 +14,12 @@ endif()
 
 project ("CPP-Generator")
 
-add_library(CPP-GENERATOR STATIC
+add_library(CPP_GENERATOR 
     CPP-Generator.cpp
-    CPP-Generator.h
-
+   
 )
 
-
-# TODO: Add tests and install targets if needed.
-
 enable_testing()
-
-
 
 include(FetchContent)
 

@@ -16,8 +16,8 @@ public:
 	// Define the promise type struct
 	struct promise_type {
 		// Value returned to caller. yieled by co_yield
-		int current_value;
-		string label;
+		double current_value;
+		
 
 
 		//Returns the object a user is to interact with
@@ -35,7 +35,7 @@ public:
 
 		// Called when co_yield is used
 		// Sets the current value, sets the coroutine to suspend
-		suspend_always yield_value(int value) {
+		suspend_always yield_value(double value) {
 			current_value = value;
 			return{};
 		}
@@ -58,25 +58,21 @@ public:
 
 	bool next();
 
-	int value() const;
+	double value() const;
 
-	void set_alg(string newAlg); 
-
-	void PrintAlg();
-
-	string label() const;
+	
 
 private:
 	handle_type handle;
-	string alg;
+	
 
 
 };
 
-Generator count_to(int n);
+Generator count_to_test_func(double n);
 
 
 
 
 #endif //!CPP_GENERATOR_H
-// TODO: Reference additional headers your program requires here.
+
