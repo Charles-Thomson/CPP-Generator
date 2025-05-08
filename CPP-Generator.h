@@ -17,6 +17,7 @@ public:
 	struct promise_type {
 		// Value returned to caller. yieled by co_yield
 		int current_value;
+		string label;
 
 
 		//Returns the object a user is to interact with
@@ -59,8 +60,15 @@ public:
 
 	int value() const;
 
+	void set_alg(string newAlg); 
+
+	void PrintAlg();
+
+	string label() const;
+
 private:
 	handle_type handle;
+	string alg;
 
 
 };
