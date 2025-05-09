@@ -16,6 +16,7 @@ project ("CPP-Generator")
 
 add_library(CPP_GENERATOR 
     CPP-Generator.cpp
+    ExposedFunctions/cppGenerator.h
    
 )
 
