@@ -17,8 +17,20 @@ project ("CPP-Generator")
 add_library(CPP_GENERATOR 
     CPP-Generator.cpp
     ExposedFunctions/cppGenerator.h
-   
 )
+
+target_include_directories(CPP_GENERATOR
+    PUBLIC 
+        ${CMAKE_CURRENT_SOURCE_DIR}/ExposedFunctions
+    PRIVATE
+        ${CMAKE_CURENT_SOURCE_DIR}/ 
+
+)
+
+
+
+
+
 
 enable_testing()
 
