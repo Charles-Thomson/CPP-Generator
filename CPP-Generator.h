@@ -13,6 +13,8 @@ using namespace std;
 class Generator {
 public:
 
+	
+
 	// Define the promise type struct
 	struct promise_type {
 		// Value returned to caller. yieled by co_yield
@@ -48,12 +50,26 @@ public:
 		// Defeines the process when coroutine throws an error
 		void unhandled_exception() { terminate(); }
 
+
+
 	};
 
 	using handle_type = coroutine_handle<promise_type>;
 
+	Generator(std::nullptr_t) : handle(nullptr) {}
+
 	explicit Generator(handle_type h);
 	~Generator();
+
+	// Move constructor
+	Generator(Generator&& other) noexcept;
+
+	// Move assignment operator
+	Generator& operator=(Generator&& other) noexcept;
+
+	// Delete copy constructor and copy assignment
+	Generator(const Generator&) = delete;
+	Generator& operator=(const Generator&) = delete;
 
 
 	bool next();
